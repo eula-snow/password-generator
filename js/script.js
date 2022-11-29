@@ -125,25 +125,32 @@ function getPasswordOptions() {
     characterSet = characterSet.concat(upperCasedCharacters);
   }
 
-  //Checks if the set contains any characters
-  if (characterSet.length === 0) {
-    alert("Your character set is empty.");
-  }
-
-  //Return the selected character set and password length
-  var setLen = [characterSet, passLength];
-  return setLen;
+  //Return the selected character set and desired password length
+  return [characterSet, passLength];
 }
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-  var randomIndex = Math.floor(Math.random() * arr.length);
+  var randomIndex = Math.floor(Math.random() * (arr.length - 1));
   var item = arr[randomIndex];
   return item;
 }
 
 // Function to generate password with user input
-function generatePassword() {}
+function generatePassword() {
+  var setLen = getPasswordOptions();
+  var genPass = "";
+  //Check if the character set is empty
+  if (setLen[0].length === 0) {
+    alert("Your character set is empty.");
+    return " ";
+  }
+  //Loop that generates the password
+  for (var i = 0; i < setLen[1]; i++) {
+    genPass += getRandom(setLen[0]);
+  }
+  return genPass;
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -152,7 +159,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
+  console.log(password);
   passwordText.value = password;
 }
 
