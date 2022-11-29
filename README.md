@@ -3,7 +3,7 @@
 ## Description
 
 This is a webpage that generates a random password bassed on user input.
-[View](https://eula-snow.github.io/console-finances/)
+[View](https://eula-snow.github.io/password-generator/)
 
 ## Installation
 
